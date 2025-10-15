@@ -59,8 +59,8 @@ classes = ('plane', 'car', 'bird', 'cat', 'deer',
 
 # Model
 print('==> Building model..')
-net = VGG('VGG11')
-# net = ResNet18()
+# net = VGG('VGG11')
+net = ResNet18()
 # net = PreActResNet18()
 # net = GoogLeNet()
 # net = DenseNet121()
@@ -161,6 +161,7 @@ def test(epoch):
         if not os.path.isdir('checkpoint'):
             os.mkdir('checkpoint')
         torch.save(state, './checkpoint/ckpt.pth')
+        files.download('./checkpoint/ckpt.pth')
         best_acc = acc
     avg_loss = test_loss / len(testloader)
     acc = 100.*correct/total
