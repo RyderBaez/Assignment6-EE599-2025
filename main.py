@@ -10,7 +10,6 @@ import torchvision.transforms as transforms
 
 import os
 import argparse
-from google.colab import files
 from models import *
 from utils import progress_bar
 import matplotlib.pyplot as plt
@@ -24,7 +23,7 @@ parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
 parser.add_argument('--resume', '-r', action='store_true',
                     help='resume from checkpoint')
-args = parser.parse_args()
+args = parser.parse_args(args=[])
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 best_acc = 0  # best test accuracy
@@ -204,8 +203,3 @@ plt.xlabel('Epoch'); plt.ylabel('Accuracy (%)'); plt.title('Test Accuracy vs Epo
 plt.legend()
 plt.savefig("test_acc.png")
 plt.show()
-
-files.download("train_loss.png")
-files.download("test_loss.png")
-files.download("train_acc.png")
-files.download("test_acc.png")
